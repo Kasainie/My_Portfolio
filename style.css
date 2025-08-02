@@ -1,0 +1,374 @@
+/* CSS Variables for a clean color palette */
+:root {
+    --background-color: #1a202c;
+    --card-background: rgba(45, 55, 72, 0.6);
+    --text-color: #e2e8f0;
+    --secondary-text-color: #a0aec0;
+    --accent-color: #4299e1;
+    --hover-color: #63b3ed;
+    --glow-color: rgba(66, 153, 225, 0.4);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0 10px 20px var(--glow-color);
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animated Background Gradient */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #2c3e50, #2d3748, #1a202c);
+    background-size: 400% 400%;
+    animation: backgroundGradient 40s ease infinite;
+}
+
+@keyframes backgroundGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* New Animation for the continuous glow effect on the hero title */
+@keyframes subtleGlow {
+    0% { text-shadow: 0 0 5px var(--glow-color); }
+    50% { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }
+    100% { text-shadow: 0 0 5px var(--glow-color); }
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+/* --- Fixed Navigation Bar --- */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(26, 32, 44, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.nav-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-profile-pic {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.nav-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.nav-logo:hover .nav-name {
+    color: var(--hover-color);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link a {
+    color: var(--secondary-text-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link a:hover {
+    color: var(--hover-color);
+    text-shadow: 0 0 5px var(--hover-color);
+}
+
+/* --- Sections and Cards --- */
+section {
+    padding: 6rem 1rem;
+    margin-top: 5rem;
+}
+
+.section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 1.2rem auto 0;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.section-heading:hover {
+    color: var(--hover-color);
+    transform: scale(1.02);
+    text-shadow: 0 0 12px var(--glow-color);
+}
+
+.card {
+    background-color: var(--card-background);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* --- Hero Section --- */
+#hero {
+    text-align: center;
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+    margin-top: 0;
+}
+
+#hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+    color: var(--text-color);
+    animation: subtleGlow 5s ease-in-out infinite;
+}
+
+#hero p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* --- About Me Section --- */
+#about .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    text-align: center;
+}
+
+#about img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+#about p {
+    font-size: 1.125rem;
+    color: var(--secondary-text-color);
+}
+
+/* --- Skills Section --- */
+#skills .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.skill-badge {
+    background-color: #2d3748;
+    color: var(--hover-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--glow-color);
+}
+
+/* --- Education & Certifications Section --- */
+#education .education-group {
+    margin-bottom: 3rem;
+}
+
+#education h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+#education h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hover-color);
+}
+
+#education .education-item {
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.2rem;
+}
+
+#education .education-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+#education p {
+    color: var(--secondary-text-color);
+}
+
+/* --- Projects Section --- */
+#projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+#projects h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+#projects a {
+    color: var(--hover-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#projects a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 5px var(--glow-color);
+}
+
+/* --- Contact Section --- */
+#contact {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 0;
+}
+
+#contact p {
+    font-size: 1.125rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 2.5rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--glow-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--secondary-text-color);
+    font-size: 0.875rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Responsive Styles for Larger Screens --- */
+@media (min-width: 768px) {
+    #about .about-content {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    #about img {
+        width: 250px;
+        height: 250px;
+    }
+
+    #hero h1 {
+        font-size: 6rem;
+    }
+}
