@@ -28,6 +28,8 @@ CSS3: For all styling, including custom CSS variables for a consistent theme, a 
 
 Google Fonts: Used to import the Inter and Poppins fonts for modern and clean typography.
 
+This portfolio has been deployed on Vercel. You can access the live version of the site by visiting the URL provided in the About section of this GitHub repository.
+
 How to Run Locally
 
 To get this portfolio up and running on your local machine, follow these simple steps:
